@@ -20,6 +20,9 @@ class BST(object):
             self.set_root(val)
         else:
             self.tree_insert(self.root, val)
+    def delete(self, val):
+        node = self.tree_search_itarative(self.root, val)
+        
     def walk(self, order):
         if order == 'pre':
             return self.tree_walk_pre_order(self.root)
@@ -31,24 +34,26 @@ class BST(object):
         return self.tree_search_itarative(self.root, val)
     def minimum(self):
         node = self.root
-        parent = None
-        while node != None:
-            parent = node
-            node = node.left
-        try:
-            return parent.value
-        except:
-            return None
+        return self.tree_minimum(node)
     def maximum(self):
         node = self.root
-        parent = None
-        while node != None:
-            parent = node
-            node = node.right
-        if parent == None:
-            return None
-        else:
-            return parent.value
+        return self.tree_maximum(node)
+    def node_successor(self, val):
+        node = self.tree_search_itarative(self.root, val)
+        if node.right != None:
+            return self.tree_minimum(node.right)
+        while node.parent != None and node.parent.right == node:
+            node = node.parent
+        return node.parent.value
+    def node_predecessor(self, val):
+        node = self.tree_search_itarative(self.root, val)
+        if node.left != None:
+            return self.tree_minimum(node.left)
+        while node.parent != None and node.parent.left == node:
+            node = node.parent
+        return node.parent.value
+
+
     # private functions
     def tree_insert(self, node, val):
         if val < node.value:
@@ -95,6 +100,25 @@ class BST(object):
             else:
                 node = node.right
         return node
+    def tree_minimum(self,node):
+        parent = None
+        while node != None:
+            parent = node
+            node = node.left
+        try:
+            return parent.value
+        except:
+            return None
+    def tree_maximum(self,node):
+        parent = None
+        while node != None:
+            parent = node
+            node = node.right
+        try:
+            return parent.value
+        except:
+            return None
+
 test = BST()
 test.insert(15)
 test.insert(6)
@@ -107,4 +131,5 @@ test.insert(2)
 test.insert(4)
 test.insert(13)
 test.insert(9)
-test.walk('post')
+test.minimum()
+test.node_successor(13).value
