@@ -3,6 +3,7 @@ class Nodes:
         self.value = value
         self.left = None
         self.right = None
+        self.parent = None
     def __str__(self):
         return str(self.value)
 
@@ -54,12 +55,17 @@ class BST(object):
             if node.left:
                 self.tree_insert(node.left, val)
             else:
-                node.left = Nodes(val)
+                temp = Nodes(val)
+                temp.parent = node
+                node.left = temp
+
         elif val >= node.value:
             if node.right:
                 self.tree_insert(node.right, val)
             else:
-                node.right = Nodes(val)
+                temp = Nodes(val)
+                temp.parent = node
+                node.right = temp
     def tree_walk_in_order(self, node):
         if node != None:
             self.tree_walk_in_order(node.left)
