@@ -71,8 +71,6 @@ class BST(object):
         while node.parent != None and node.parent.left == node:
             node = node.parent
         return node.parent
-
-
     # private functions
     def tree_insert(self, node, val):
         if val < node.value:
@@ -131,7 +129,6 @@ class BST(object):
             parent = node
             node = node.right
         return parent
-
 
 test = BST()
 test.insert(15)
