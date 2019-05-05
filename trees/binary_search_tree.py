@@ -42,9 +42,6 @@ class BST(object):
             temp_node = self.tree_minimum(node.right)
             self.delete(temp_node.value)
             node.value = temp_node.value
-
-
-
     def walk(self, order):
         if order == 'pre':
             return self.tree_walk_pre_order(self.root)
@@ -134,6 +131,8 @@ class BST(object):
             parent = node
             node = node.right
         return parent
+
+
 test = BST()
 test.insert(15)
 test.insert(5)
