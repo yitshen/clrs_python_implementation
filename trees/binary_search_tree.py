@@ -22,7 +22,29 @@ class BST(object):
             self.tree_insert(self.root, val)
     def delete(self, val):
         node = self.tree_search_itarative(self.root, val)
-        
+        if not (node.left != None and node.right != None):
+            if node.left == None and node.right == None:
+                temp = None
+            elif node.left != None and node.right == None:
+                temp = node.left
+            else:
+                temp = node.right
+            if temp != None:
+                temp.parent = node.parent
+            if node.parent == None:
+                self.root = temp
+            else:
+                if node.parent.left == node:
+                    node.parent.left = temp
+                else:
+                    node.parent.right = temp
+        else:
+            temp_node = self.tree_minimum(node.right)
+            self.delete(temp_node.value)
+            node.value = temp_node.value
+
+
+
     def walk(self, order):
         if order == 'pre':
             return self.tree_walk_pre_order(self.root)
@@ -44,14 +66,14 @@ class BST(object):
             return self.tree_minimum(node.right)
         while node.parent != None and node.parent.right == node:
             node = node.parent
-        return node.parent.value
+        return node.parent
     def node_predecessor(self, val):
         node = self.tree_search_itarative(self.root, val)
         if node.left != None:
             return self.tree_minimum(node.left)
         while node.parent != None and node.parent.left == node:
             node = node.parent
-        return node.parent.value
+        return node.parent
 
 
     # private functions
@@ -105,31 +127,25 @@ class BST(object):
         while node != None:
             parent = node
             node = node.left
-        try:
-            return parent.value
-        except:
-            return None
+        return parent
     def tree_maximum(self,node):
         parent = None
         while node != None:
             parent = node
             node = node.right
-        try:
-            return parent.value
-        except:
-            return None
-
+        return parent
 test = BST()
 test.insert(15)
-test.insert(6)
-test.insert(18)
+test.insert(5)
+test.insert(16)
 test.insert(3)
-test.insert(7)
-test.insert(17)
+test.insert(12)
 test.insert(20)
-test.insert(2)
-test.insert(4)
+test.insert(10)
 test.insert(13)
-test.insert(9)
-test.minimum()
-test.node_successor(13).value
+test.insert(18)
+test.insert(23)
+test.insert(6)
+test.insert(7)
+test.delete(5)
+test.walk('in')
