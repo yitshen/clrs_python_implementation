@@ -3,8 +3,12 @@ Implementing the Introduction to Algorithms using python
 
 TO DO:
 
-implement 
-binary search tree:
-  successor function, delete function
-  
+implement
+
+Chapter 10:
+stack
+queue
+chain
+
+
 red-black tree:
