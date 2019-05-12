@@ -4,13 +4,12 @@ Implementing the Introduction to Algorithms using python
 TO DO:
 
 implement
-radix sort
 
 Chapter 10:
 stack
 queue
 chain
-
+augmented bst
 red-black tree:
 
 avl tree
