@@ -1,3 +1,8 @@
+'''
+clrs dynamic programming example 1:
+rod cutting problem
+'''
+
 def cut_rod(price_list, length):
     if length == 0:
         return 0
