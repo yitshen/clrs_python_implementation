@@ -1,11 +1,9 @@
 class stack(object):
     def __init__(self, val = None):
-        if val == None:
-            self.storage = []
-            self.top = 0
-        else:
-            self.storage = [val]
-            self.top = 1
+        self.storage = []
+        self.top = 0
+        if val != None:
+            self.push(val)
     def stack_empty(self):
         if self.storage == []:
             return True
@@ -23,12 +21,12 @@ class stack(object):
         return self.storage[self.top]
     def __str__(self):
         return str(self.storage[:self.top])
-# test = stack()
-# test.stack_empty()
-# test = stack('5')
-# test.push(3)
-# test.push(10)
-# test.stack_empty()
-# test.pop()
-# test.push(7)
-# print(test)
+test = stack()
+test.stack_empty()
+test = stack('5')
+test.push(3)
+test.push(10)
+test.stack_empty()
+test.pop()
+test.push(7)
+print(test)
