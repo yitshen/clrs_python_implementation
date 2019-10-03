@@ -12,8 +12,6 @@ chain
 augmented bst
 red-black tree:
 
-avl tree
-
 
 
 dynamic programming:
